@@ -1,0 +1,204 @@
+﻿TRABAJO INFORMÁTICA :
+ EXAMEN  de CONDUCIR B2.
+
+
+
+
+Integrantes:
+  
+Claudia Alonso Alcobendas. 53806          
+
+
+Angelica Cablanque Corredor. 53853
+
+
+Paula de Paz Gómez. 53917
+ 
+Yessenia López Cevallos. 54039
+
+
+Alba Navarro Moreno. 54123
+
+
+Elisa Peláez Peña. 54127
+
+
+
+
+
+
+
+
+
+
+ÍNDICE
+
+
+
+
+1. Descripción del trabajo.
+
+
+      2.   Funciones empleadas para cada parte.
+
+
+      3.   Ficheros en txt.
+
+
+      4.   Realización de cada parte del trabajo por cada integrante del grupo. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 1 .DESCRIPCIÓN DEL TRABAJO.
+
+
+El trabajo consiste en lo siguiente:
+1. Lo primero que te tiene pedir al meterse es : nombre , apellidos DNI o NIE y nombre de autoescuela.
+2. Hay que crear ficheros para cada usuario que ha realizado el test. Al meterte te tiene
+que mostrar un test que constaran de 30 preguntas , que salen de manera aleatoria de
+un banco de preguntas. Cada pregunta puede constar de 2 o 3 opciones para elegir. Para que éste sea aprobado, el número de aciertos debe ser mayor o igual a 27. Al final se mostrará por pantalla si el test está aprobado o no, así como un nuevo menú con las siguientes opciones: ¿Desea repetir el test? ¿Desea ver los fallos ? ¿Desea hacer otro test? o salir.
+3. Si el usuario vuelve a meter sus datos , (lo mismo que está en el punto 1) , debe de ver
+el último test que ha hecho (si están aprobado o no).
+4. Al final del todo debe salir : Gracias por su visita.
+
+
+
+
+2. FUNCIONES.
+
+
+Hemos realizado entre todas 12 funciones. Cada integrante ha hecho como mínimo  2  funciones de las 12 existentes. La funciones son las siguientes 
+
+
+1.void escribir_test_archivo(char nombreArchivo[], int aciertos, char resultado[]);
+Esta función va abrir un fichero en modo leer  previamente creado que va  a ser llamado 
+U( la U de usuario)+ Nombre ( introducido por la persona) +DNI( introducido por la persona ). Al abrirse va imprimir  los aciertos del último test realizado y si esta aprobado o suspenso.
+
+
+2.void mostrar_resultados_test(struct Pregunta newTest[]);
+Esta función se ejecutará cuando el usuario , al acabar el test seleccione la opción de mostrar fallos en el nuevo menú. Va imprimir en pantalla la respuesta correcta y la respuesta del usuario.
+
+
+3.void menu_test(struct Pregunta bancops[], int size, char nombreArchivo[]);
+Esta función para que se ejecute bien  incluye a las otras funciones. Dependiendo de la opción que se escoja , se realizará una u otra., es decir a, b , c ,q. Si se escoge (a)se ejecutará la función de realizar test. Si se escoge (b) realizará la función de mostrar resultados de test. La opción(c) , incluye dos funciones, ya que la opción es de realizar un nuevo test. por lo que se genera  un test con la función de generar test y para realizar el test necesita la otra función que es la de realizar test . Y la ultima opcion (q) , no incluye ninguna función , ya que es la de la salida 
+
+
+4.void generar_test(struct Pregunta bancops[], int size, struct Pregunta newTest[]);
+Va generar las preguntas de manera aleatoria, que dichas preguntas vienen de un fichero llamado banco de preguntas , que contiene 100 preguntas  , se escoge 30 de ellas de manera aleatoria para eso tenemos que usar la librería o biblioteca ,<time .h> Y las va imprimir en pantalla 
+Esta función , va coger la estructura de la pregunta , dónde viene definida al principio del programa, strcut Pregunta .
+El máximo de las preguntas en el archivo de texto a leer pueden ser hasta 456, sin embargo esta cifra se puede cambiar en el código fuente del programa. 
+
+
+5.void realizar_test(struct Pregunta newTest[], char nombreArchivo[]);
+Esta función permite realizar el test al usuario, el contador de aciertos empieza en 0. Saldrán por pantalla 30 preguntas (mostradas de una en una) cuyas respuestas correctas pueden ser 1, 2,3. Si la respuesta introducida por el usuario es correcta, el contador irá aumentando +1. Finalmente, si los aciertos son >= 27 el test estaría aprobado. Además esto se va a “guardar” en la funcion de escribir_test_archivo
+
+
+6.void leer_archivo_usuario(const char nombre[], const char dni[], char nombreArchivo[]);
+Se va a crear lo que es fichero del usuario. 
+Aquí dependiendo si el usuario ya está “registrado” no, se va abrir  un fichero u otro.  El primer fichero se abre en modo leer,  si se abre correctamente esto significa que está ya registrado, si no se abre, se creará fichero en modo de escritura.
+
+
+7.void mostrar_pregunta(struct Pregunta pregunta);
+Está funcion imprime la pregunta, primero el numero de la pregunta,  luego la pregunta en si  y despues las opciones. Para esto tiene que tener en cuenta lo que es la struct Pregunta pregunta
+
+
+8.void leer_archivo_preguntas(struct Pregunta bancops[], int *length);
+Dicha función va abrir el fichero  donde se encuentra las preguntas que está en formato de txt , se abre en modo leer. 
+
+
+9.struct Pregunta leer_pregunta(char str1[]);
+Esta función va ir leyendo lo que es la estructura de la pregunta que está en el bancopreguntas.txt , para eso tendrán que ir de cierta manera ordenada las preguntas.
+
+
+10.void introducir_datos(char nombre[], char apellidos[], char dni[], char autoescuela[], char nombreArchivo[]);
+Esta función es fundamental para crear un fichero para el usuario correctamente, se accede a ella gracias a la opción (A) en el menú. Aquí solo se introducen los datos que se le pide al usuario. Si se ha introducido correctamente podrá ejecutarse la función de leer archivo de usuario.
+
+
+11.void imprimir_datos(const char nombre[], const char apellidos[], const char dni[], const char autoescuela[]);
+Imprime los datos introducidos en la función anterior.
+
+
+12.void menu_autoescuela(struct Pregunta bancops[], int size);
+De esta función se podría decir que es la principal, ya que lo primero que sale en todo el programa .Consta de tres opciones: la opción (A) te redirige a la función introducir datos, citada anteriormente. La opción (B) imprime lo datos del usuario, los cuales se supone que se ha introducido anteriormente y genera el test. La opción (S) sale directamente del programa.
+
+
+
+
+
+
+3. FICHEROS.
+ 
+Este trabajo consta  principalmente del fichero : BancoPreguntas.txt , es fundamental ya que en él se encuentra las 100 preguntas con sus respectivas opciones y su respuesta correcta. Hemos tenido en cuenta lo que es orden de las preguntas , para que la función de leer pregunta no tenga ningún error. Por lo que siguen el siguiente  orden :
+
+
+# : Pregunta , 1: Respuesta, 2: Respuesta@, 3: Respuesta
+El @ significa la respuesta correcta y debe ir siempre detrás de una de las tres respuestas.
+  
+
+
+Detrás del número de la pregunta y de 1, 2 y 3 (las opciones) tiene que ir dos puntos, además cada opción está separada por una coma y la pregunta también.
+ 
+A parte de este fichero, se irán creando otros a medida que los usuarios del programa vayan metiendo sus datos, éstos tendrán el siguiente nombre:
+  U+ Nombre+DNI
+
+
+4. REALIZACIÓN. 
+
+
+Dado que el trabajo consta de 12 funciones en total, cada integrante del grupo ha realizado lo siguiente:
+
+
+-ALBA NAVARRO: ha desarrollado la función de escribir_test_archivo y la función realizar_test.
+
+
+-ANGÉLICA CABLANQUE: ha realizado las funciones mostrar_resultados y la de generar_test.
+
+
+-CLAUDIA ALONSO: ha desarrollado lo que es el menu_test y el de mostrar_preguntas.
+
+
+-ELISA PELÁEZ : ha realizado las funciones de leer_archivo_usuario  y menu_autoescuela.
+
+
+-YESSENIA LOPEZ : ha desarrollado  leer_archivo_preguntas y la de  introducir_datos .
+
+
+-PAULA DE PAZ : ha realizado la función de leer_preguntas  y la función imprimir_datos.
+ 
+Aunque cada una se ha ocupado individualmente de dos funciones del programa, hemos trabajado la mayor parte del tiempo en grupo o parejas ya que la mayoría de las funciones dependen de otras para funcionar. De esta manera:
+Claudia, Angélica y Alba se han ocupado de una parte del test. 
+Yessenia y Paula se han encargado de leer las preguntas que están en BancoPreguntas.txt.
+Elisa ha trabajado junto con Yessenia, Paula y Claudia para unir sus respectivas funciones.
+Yessenia y Alba han unido también sus funciones.
+Finalmente, para que el programa funcionase y después de trabajar en cada función de manera individual, el grupo completo ha juntado todas las funciones haciendo los cambios necesarios para que el programa se ejecutara correctamente.
